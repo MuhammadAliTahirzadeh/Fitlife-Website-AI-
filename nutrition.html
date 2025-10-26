@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Nutrition</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <!-- Apply saved theme & accent as early as possible to avoid flash-of-wrong-theme -->
+    <script>
+        (function(){
+            try{
+                var s = localStorage.getItem('fitlife_settings');
+                if (!s) return;
+                var cfg = JSON.parse(s);
+                if (cfg && cfg.theme) {
+                    document.documentElement.setAttribute('data-theme', cfg.theme);
+                }
+                if (cfg && cfg.accentColor) {
+                    var c = cfg.accentColor;
+                    document.documentElement.style.setProperty('--primary-color', c);
+                    document.documentElement.style.setProperty('--accent-color', c);
+                    try{
+                        var hex = c.replace('#','').trim();
+                        var r,g,b;
+                        if (hex.length === 3) {
+                            r = parseInt(hex[0]+hex[0],16);
+                            g = parseInt(hex[1]+hex[1],16);
+                            b = parseInt(hex[2]+hex[2],16);
+                        } else {
+                            r = parseInt(hex.substring(0,2),16);
+                            g = parseInt(hex.substring(2,4),16);
+                            b = parseInt(hex.substring(4,6),16);
+                        }
+                        if (!isNaN(r)) document.documentElement.style.setProperty('--primary-rgb', r+", "+g+", "+b);
+                    }catch(e){}
+                }
+            }catch(e){}
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_6_543)">
+                        <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+                        <path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_6_543">
+                            <rect fill="white" height="48" width="48"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h1 class="logo-text">FitLife</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="workout.html" class="nav-link">Workout</a>
+                <a href="nutrition.html" class="nav-link active">Nutrition</a>
+                <a href="note.html" class="nav-link">Note</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="material-symbols-outlined theme-icon">light_mode</span>
+                </button>
+                <div class="profile-avatar"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="content-container">
+                <div class="page-header text-center">
+                    <h2 class="page-title">Daily Meal Log</h2>
+                    <p class="page-description">Track your meals and calorie intake for today.</p>
+                </div>
+
+                <div class="nutrition-form-card">
+                    <form id="mealForm" class="meal-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="foodInput">Food</label>
+                                <input type="text" id="foodInput" placeholder="e.g., Grilled Chicken Salad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="portionInput">Portion</label>
+                                <input type="text" id="portionInput" placeholder="e.g., 1 bowl" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="caloriesInput">Calories</label>
+                                <input type="number" id="caloriesInput" placeholder="e.g., 350" min="1" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="add-meal-btn">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span>Add Meal</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="meals-section">
+                    <h3 class="section-title">Today's Meals</h3>
+                    <div class="meals-list" id="mealsList">
+                        <!-- Meals will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="calorie-summary">
+                    <h3 class="section-title">Today's Calorie Summary</h3>
+                    <div class="summary-card summary-modern">
+                        <div class="summary-grid">
+                            <div class="progress-column">
+                                <svg class="progress-ring" width="140" height="140" viewBox="0 0 140 140" aria-hidden="true">
+                                    <circle class="ring-bg" cx="70" cy="70" r="58" stroke-width="10" fill="none" />
+                                    <circle class="ring" id="progressRing" cx="70" cy="70" r="58" stroke-width="10" stroke-linecap="round" fill="none" stroke-dasharray="364.42" stroke-dashoffset="364.42" />
+                                    <text x="70" y="78" text-anchor="middle" class="ring-text" id="ringPercentage">0%</text>
+                                </svg>
+                            </div>
+                            <div class="details-column">
+                                <div class="totals-row">
+                                    <div class="totals-item">
+                                        <p class="label">Consumed</p>
+                                        <p class="value" id="currentCaloriesModern">0</p>
+                                    </div>
+                                    <div class="totals-item">
+                                        <p class="label">Goal</p>
+                                        <div class="goal-editor-inline">
+                                            <p class="value" id="goalCaloriesModern">2500</p>
+                                            <button class="icon-btn edit-goal-btn" id="editGoalBtn" title="Edit goal" aria-label="Edit calorie goal">
+                                                <span class="material-symbols-outlined">edit</span>
+                                            </button>
+
+                                            <div class="goal-edit-form" id="goalEditForm" hidden>
+                                                <input type="number" id="goalInput" min="1" aria-label="Calorie goal input" />
+                                                <div class="goal-actions">
+                                                    <button type="button" class="btn-secondary" id="cancelGoalBtn">Cancel</button>
+                                                    <button type="button" class="btn-primary" id="saveGoalBtn">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="remaining" id="remainingText">—</p>
+                                <div class="breakdown-row">
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-label">Meals</span>
+                                        <span class="breakdown-value" id="mealsCount">0</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="breakdown-label">Avg</span>
+                                        <span class="breakdown-value" id="avgCalories">0 kcal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Edit Meal Modal -->
+        <div class="modal" id="editMealModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Meal</h3>
+                    <button class="modal-close" id="closeEditModal">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <form id="editMealForm" class="meal-form" style="padding: 1.5rem;">
+                    <div class="form-group">
+                        <label for="editFoodInput">Food</label>
+                        <input type="text" id="editFoodInput" placeholder="e.g., Grilled Chicken Salad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPortionInput">Portion</label>
+                        <input type="text" id="editPortionInput" placeholder="e.g., 1 bowl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCaloriesInput">Calories</label>
+                        <input type="number" id="editCaloriesInput" placeholder="e.g., 350" min="1" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelEditBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">Update Meal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Nutrition Page - Complete JavaScript Implementation
+        class NutritionManager {
+            constructor() {
+                this.meals = this.loadMeals();
+                this.settings = this.loadSettings();
+                this.editingMealId = null;
+                this.init();
+            }
+
+            // Initialize the application
+            init() {
+                this.renderMeals();
+                this.updateCalorieSummary();
+                this.setupEventListeners();
+                this.loadProfileImage();
+                this.setupProfileNavigation();
+                this.setupThemeToggle();
+                this.setupGoalEditor();
+                this.applySavedAccentColor();
+
+                // Listen for settings updates dispatched by SettingsManager so theme changes
+                // (and accent color) apply immediately without requiring a storage event.
+                window.addEventListener('fitlife_settings_updated', (e) => {
+                    try {
+                        const newSettings = e.detail || {};
+                        this.settings = { ...this.settings, ...newSettings };
+
+                        // Apply theme to both body and documentElement
+                        if (this.settings.theme) {
+                            document.body.setAttribute('data-theme', this.settings.theme);
+                            document.documentElement.setAttribute('data-theme', this.settings.theme);
+                        }
+
+                        // Apply accent color and its rgb variable
+                        if (this.settings.accentColor) {
+                            document.documentElement.style.setProperty('--primary-color', this.settings.accentColor);
+                            document.documentElement.style.setProperty('--accent-color', this.settings.accentColor);
+                            try {
+                                const hex = this.settings.accentColor;
+                                const cleaned = hex.replace('#', '').trim();
+                                let r, g, b;
+                                if (cleaned.length === 3) {
+                                    r = parseInt(cleaned[0] + cleaned[0], 16);
+                                    g = parseInt(cleaned[1] + cleaned[1], 16);
+                                    b = parseInt(cleaned[2] + cleaned[2], 16);
+                                } else {
+                                    r = parseInt(cleaned.substring(0,2), 16);
+                                    g = parseInt(cleaned.substring(2,4), 16);
+                                    b = parseInt(cleaned.substring(4,6), 16);
+                                }
+                                document.documentElement.style.setProperty('--primary-rgb', `${r}, ${g}, ${b}`);
+                            } catch (err) {
+                                console.warn('Could not parse accent color in settings event', err);
+                            }
+                        }
+
+                        // Refresh UI elements that depend on settings
+                        this.updateCalorieSummary();
+                        this.updateThemeIcon();
+                    } catch (err) {
+                        console.warn('Error applying updated settings on nutrition page', err);
+                    }
+                });
+            }
+
+            // Load meals from localStorage
+            loadMeals() {
+                try {
+                    const stored = localStorage.getItem('fitlife_meals');
+                    if (stored) {
+                        return JSON.parse(stored);
+                    }
+                } catch (error) {
+                    console.error('Error loading meals:', error);
+                }
+                // Default meals
+                return [
+                    { id: 1, food: 'Grilled Chicken Salad', portion: '1 bowl', calories: 350, timestamp: new Date().toISOString() },
+                    { id: 2, food: 'Greek Yogurt', portion: '1 cup', calories: 150, timestamp: new Date().toISOString() },
+                    { id: 3, food: 'Banana', portion: '1 medium', calories: 105, timestamp: new Date().toISOString() }
+                ];
+            }
+
+            // Load settings from localStorage
+            loadSettings() {
+                try {
+                    const stored = localStorage.getItem('fitlife_settings');
+                    if (stored) {
+                        return JSON.parse(stored);
+                    }
+                } catch (error) {
+                    console.error('Error loading settings:', error);
+                }
+                return { calorieGoal: 2500 };
+            }
+
+            // Save meals to localStorage
+            saveMeals() {
+                try {
+                    localStorage.setItem('fitlife_meals', JSON.stringify(this.meals));
+                    // write a timestamp to trigger cross-tab updates
+                    try {
+                        localStorage.setItem('fitlife_meals_last_update', Date.now().toString());
+                    } catch (e) {
+                        // ignore
+                    }
+                } catch (error) {
+                    console.error('Error saving meals:', error);
+                    this.showToast('Error saving meal data', 'error');
+                }
+            }
+
+            // Setup all event listeners
+            setupEventListeners() {
+                const mealForm = document.getElementById('mealForm');
+                if (mealForm) {
+                    mealForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+                }
+
+                // Edit modal event listeners
+                const editForm = document.getElementById('editMealForm');
+                if (editForm) {
+                    editForm.addEventListener('submit', (e) => this.handleEditSubmit(e));
+                }
+
+                const closeEditModal = document.getElementById('closeEditModal');
+                if (closeEditModal) {
+                    closeEditModal.addEventListener('click', () => this.closeEditModal());
+                }
+
+                const cancelEditBtn = document.getElementById('cancelEditBtn');
+                if (cancelEditBtn) {
+                    cancelEditBtn.addEventListener('click', () => this.closeEditModal());
+                }
+
+                // Close modal on outside click
+                const editModal = document.getElementById('editMealModal');
+                if (editModal) {
+                    editModal.addEventListener('click', (e) => {
+                        if (e.target === editModal) {
+                            this.closeEditModal();
+                        }
+                    });
+                }
+
+                // Close modal on ESC key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && editModal && editModal.classList.contains('active')) {
+                        this.closeEditModal();
+                    }
+                });
+            }
+
+            // Handle form submission (add meal only)
+            handleFormSubmit(e) {
+                e.preventDefault();
+
+                const food = document.getElementById('foodInput').value.trim();
+                const portion = document.getElementById('portionInput').value.trim();
+                const calories = parseInt(document.getElementById('caloriesInput').value);
+
+                if (!food || !portion || !calories || calories < 1) {
+                    this.showToast('Please fill in all fields correctly', 'error');
+                    return;
+                }
+
+                // Add new meal
+                this.addMeal({ food, portion, calories });
+
+                // Reset form
+                e.target.reset();
+            }
+
+            // Handle edit form submission
+            handleEditSubmit(e) {
+                e.preventDefault();
+
+                const food = document.getElementById('editFoodInput').value.trim();
+                const portion = document.getElementById('editPortionInput').value.trim();
+                const calories = parseInt(document.getElementById('editCaloriesInput').value);
+
+                if (!food || !portion || !calories || calories < 1) {
+                    this.showToast('Please fill in all fields correctly', 'error');
+                    return;
+                }
+
+                if (this.editingMealId !== null) {
+                    this.updateMeal(this.editingMealId, { food, portion, calories });
+                    this.closeEditModal();
+                }
+            }
+
+            // Add a new meal
+            addMeal(mealData) {
+                const newMeal = {
+                    id: Date.now(),
+                    ...mealData,
+                    timestamp: new Date().toISOString()
+                };
+
+                this.meals.push(newMeal);
+                this.saveMeals();
+                this.renderMeals();
+                this.updateCalorieSummary();
+                this.showToast('Meal added successfully!', 'success');
+            }
+
+            // Update an existing meal
+            updateMeal(id, mealData) {
+                const mealIndex = this.meals.findIndex(m => m.id === id);
+                if (mealIndex !== -1) {
+                    this.meals[mealIndex] = {
+                        ...this.meals[mealIndex],
+                        ...mealData,
+                        timestamp: new Date().toISOString()
+                    };
+                    this.saveMeals();
+                    this.renderMeals();
+                    this.updateCalorieSummary();
+                    this.showToast('Meal updated successfully!', 'success');
+                }
+            }
+
+            // Edit a meal (open modal)
+            editMeal(id) {
+                const meal = this.meals.find(m => m.id === id);
+                if (meal) {
+                    // Populate modal form
+                    document.getElementById('editFoodInput').value = meal.food;
+                    document.getElementById('editPortionInput').value = meal.portion;
+                    document.getElementById('editCaloriesInput').value = meal.calories;
+                    
+                    this.editingMealId = id;
+                    
+                    // Show modal
+                    this.openEditModal();
+                }
+            }
+
+            // Open edit modal
+            openEditModal() {
+                const modal = document.getElementById('editMealModal');
+                if (modal) {
+                    modal.classList.add('active');
+                    // Focus on first input
+                    setTimeout(() => {
+                        document.getElementById('editFoodInput').focus();
+                    }, 100);
+                }
+            }
+
+            // Close edit modal
+            closeEditModal() {
+                const modal = document.getElementById('editMealModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+                
+                // Reset form
+                const editForm = document.getElementById('editMealForm');
+                if (editForm) {
+                    editForm.reset();
+                }
+                
+                this.editingMealId = null;
+            }
+
+            // Delete a meal
+            deleteMeal(id) {
+                const meal = this.meals.find(m => m.id === id);
+                if (meal && confirm(`Are you sure you want to delete "${meal.food}"?`)) {
+                    this.meals = this.meals.filter(m => m.id !== id);
+                    this.saveMeals();
+                    this.renderMeals();
+                    this.updateCalorieSummary();
+                    this.showToast('Meal deleted successfully!', 'success');
+                }
+            }
+
+            // Render all meals
+            renderMeals() {
+                const mealsList = document.getElementById('mealsList');
+                if (!mealsList) return;
+
+                if (this.meals.length === 0) {
+                    mealsList.innerHTML = `
+                        <div class="empty-state" style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                            <span class="material-symbols-outlined" style="font-size: 4rem; color: var(--text-tertiary);">restaurant_menu</span>
+                            <h4 style="margin-top: 1rem; color: var(--text-primary);">No meals logged yet</h4>
+                            <p>Start tracking your nutrition by adding your first meal above.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                mealsList.innerHTML = this.meals.map(meal => `
+                    <div class="meal-item" data-id="${meal.id}">
+                        <div class="meal-info">
+                            <p class="meal-name">${this.escapeHtml(meal.food)}</p>
+                            <p class="meal-portion">${this.escapeHtml(meal.portion)}</p>
+                        </div>
+                        <div class="meal-calories">${meal.calories} kcal</div>
+                        <div class="meal-actions">
+                            <button class="meal-action-btn" data-meal-id="${meal.id}" data-action="edit" title="Edit meal">
+                                <span class="material-symbols-outlined">edit</span>
+                            </button>
+                            <button class="meal-action-btn danger" data-meal-id="${meal.id}" data-action="delete" title="Delete meal">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add event listeners to meal action buttons
+                this.setupMealActionListeners();
+            }
+
+            // Setup meal action button listeners
+            setupMealActionListeners() {
+                const mealsList = document.getElementById('mealsList');
+                if (!mealsList) return;
+
+                mealsList.addEventListener('click', (e) => {
+                    const actionBtn = e.target.closest('.meal-action-btn');
+                    if (actionBtn) {
+                        const mealId = parseInt(actionBtn.dataset.mealId);
+                        const action = actionBtn.dataset.action;
+
+                        if (action === 'edit') {
+                            this.editMeal(mealId);
+                        } else if (action === 'delete') {
+                            this.deleteMeal(mealId);
+                        }
+                    }
+                });
+            }
+
+            // Update calorie summary (modern)
+            updateCalorieSummary() {
+                const total = this.meals.reduce((s, m) => s + (parseInt(m.calories) || 0), 0);
+                const goal = (this.settings && this.settings.calorieGoal) ? Number(this.settings.calorieGoal) : 2500;
+                const pct = goal > 0 ? Math.min(100, Math.round((total / goal) * 100)) : 0;
+
+                // Modern summary elements
+                const currentEl = document.getElementById('currentCaloriesModern');
+                const goalEl = document.getElementById('goalCaloriesModern');
+                const remainingEl = document.getElementById('remainingText');
+                const mealsCountEl = document.getElementById('mealsCount');
+                const avgEl = document.getElementById('avgCalories');
+                const ringEl = document.getElementById('progressRing');
+                const ringText = document.getElementById('ringPercentage');
+
+                if (currentEl) currentEl.textContent = total;
+                if (goalEl) goalEl.textContent = goal;
+
+                const remaining = goal - total;
+                if (remainingEl) {
+                    if (remaining >= 0) {
+                        remainingEl.textContent = `${remaining} kcal remaining`;
+                        remainingEl.classList.remove('over');
+                    } else {
+                        remainingEl.textContent = `${Math.abs(remaining)} kcal over`;
+                        remainingEl.classList.add('over');
+                    }
+                }
+
+                const mealsCount = this.meals.length;
+                if (mealsCountEl) mealsCountEl.textContent = mealsCount;
+
+                const avg = mealsCount > 0 ? Math.round(total / mealsCount) : 0;
+                if (avgEl) avgEl.textContent = `${avg} kcal`;
+
+                // Update SVG ring (circle circumference = 2 * PI * r; r=58)
+                const radius = 58;
+                const circumference = 2 * Math.PI * radius;
+                if (ringEl) {
+                    ringEl.style.strokeDasharray = `${circumference}`;
+                    const offset = circumference - (pct / 100) * circumference;
+                    ringEl.style.strokeDashoffset = offset;
+                }
+                if (ringText) ringText.textContent = `${pct}%`;
+            }
+
+            // Load profile image from localStorage
+            loadProfileImage() {
+                const savedImage = localStorage.getItem('fitlife_profile_image');
+                if (savedImage) {
+                    const profileAvatars = document.querySelectorAll('.profile-avatar');
+                    profileAvatars.forEach(avatar => {
+                        avatar.style.backgroundImage = `url(${savedImage})`;
+                        avatar.style.backgroundSize = 'cover';
+                        avatar.style.backgroundPosition = 'center';
+                    });
+                }
+            }
+
+            // Setup profile avatar navigation to settings
+            setupProfileNavigation() {
+                const profileAvatars = document.querySelectorAll('.profile-avatar');
+                profileAvatars.forEach(avatar => {
+                    avatar.addEventListener('click', () => {
+                        window.location.href = 'settings.html#profile';
+                    });
+                    avatar.style.cursor = 'pointer';
+                });
+            }
+
+            // Setup theme toggle
+            setupThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (!themeToggle) return;
+
+                // Update icon based on current theme
+                this.updateThemeIcon();
+
+                // Add click event listener
+                themeToggle.addEventListener('click', () => {
+                    this.toggleTheme();
+                });
+            }
+
+            // On initialization, also apply saved accent color so this page picks up theme changes
+            applySavedAccentColor() {
+                try {
+                    const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+                    if (settings.accentColor) {
+                        document.documentElement.style.setProperty('--primary-color', settings.accentColor);
+                        document.documentElement.style.setProperty('--accent-color', settings.accentColor);
+                        // Compute RGB values for accent color
+                        const hex = settings.accentColor;
+                        const cleaned = hex.replace('#', '').trim();
+                        let r, g, b;
+                        if (cleaned.length === 3) {
+                            r = parseInt(cleaned[0] + cleaned[0], 16);
+                            g = parseInt(cleaned[1] + cleaned[1], 16);
+                            b = parseInt(cleaned[2] + cleaned[2], 16);
+                        } else {
+                            r = parseInt(cleaned.substring(0,2), 16);
+                            g = parseInt(cleaned.substring(2,4), 16);
+                            b = parseInt(cleaned.substring(4,6), 16);
+                        }
+                        document.documentElement.style.setProperty('--primary-rgb', `${r}, ${g}, ${b}`);
+                    }
+                } catch (e) {
+                    console.warn('Could not apply saved accent color on nutrition page', e);
+                }
+            }
+
+            // Toggle between light and dark theme
+            toggleTheme() {
+                const currentTheme = this.settings.theme || 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                // Add rotation animation
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.classList.add('rotating');
+                    setTimeout(() => {
+                        themeToggle.classList.remove('rotating');
+                    }, 500);
+                }
+
+                // Update settings
+                this.settings.theme = newTheme;
+
+                // Persist and broadcast the change so other pages/tabs update
+                try {
+                    localStorage.setItem('fitlife_settings', JSON.stringify(this.settings));
+                    localStorage.setItem('fitlife_settings_last_update', Date.now().toString());
+                } catch (err) {
+                    console.warn('Could not persist settings during theme toggle', err);
+                }
+
+                try {
+                    window.dispatchEvent(new CustomEvent('fitlife_settings_updated', { detail: this.settings }));
+                } catch (e) {
+                    console.warn('Could not dispatch settings update from nutrition page', e);
+                }
+
+                // Apply theme to both body and documentElement to be consistent
+                document.body.setAttribute('data-theme', newTheme);
+                document.documentElement.setAttribute('data-theme', newTheme);
+
+                // Update icon
+                this.updateThemeIcon();
+            }
+
+            // Setup inline goal editor handlers
+            setupGoalEditor() {
+                const editBtn = document.getElementById('editGoalBtn');
+                const goalForm = document.getElementById('goalEditForm');
+                const goalInput = document.getElementById('goalInput');
+                const saveBtn = document.getElementById('saveGoalBtn');
+                const cancelBtn = document.getElementById('cancelGoalBtn');
+
+                const goalDisplay = document.getElementById('goalCaloriesModern');
+
+                // Initialize input value
+                const currentGoal = (this.settings && this.settings.calorieGoal) ? Number(this.settings.calorieGoal) : 2500;
+                if (goalDisplay) goalDisplay.textContent = currentGoal;
+                if (goalInput) goalInput.value = currentGoal;
+
+                if (editBtn && goalForm) {
+                    editBtn.addEventListener('click', () => {
+                        goalForm.hidden = false;
+                        editBtn.setAttribute('aria-expanded', 'true');
+                        setTimeout(() => goalInput && goalInput.focus(), 50);
+                    });
+                }
+
+                if (cancelBtn && goalForm) {
+                    cancelBtn.addEventListener('click', () => {
+                        goalForm.hidden = true;
+                        if (goalInput) goalInput.value = this.settings.calorieGoal || 2500;
+                        editBtn && editBtn.setAttribute('aria-expanded', 'false');
+                    });
+                }
+
+                if (saveBtn && goalInput) {
+                    saveBtn.addEventListener('click', () => {
+                        const v = parseInt(goalInput.value, 10);
+                        if (!v || v < 1) {
+                            this.showToast('Please enter a valid calorie goal', 'error');
+                            return;
+                        }
+                        this.saveGoalToSettings(v);
+                        goalForm.hidden = true;
+                        editBtn && editBtn.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+
+            // Persist new calorie goal to fitlife_settings and broadcast
+            saveGoalToSettings(newGoal) {
+                try {
+                    const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+                    settings.calorieGoal = Number(newGoal);
+                    localStorage.setItem('fitlife_settings', JSON.stringify(settings));
+                    localStorage.setItem('fitlife_settings_last_update', Date.now().toString());
+
+                    // Update local copy
+                    this.settings = settings;
+
+                    // Update UI
+                    const goalDisplay = document.getElementById('goalCaloriesModern');
+                    if (goalDisplay) goalDisplay.textContent = settings.calorieGoal;
+                    this.updateCalorieSummary();
+
+                    // Broadcast to same-tab listeners
+                    try { window.dispatchEvent(new CustomEvent('fitlife_settings_updated', { detail: settings })); } catch (e) {}
+
+                    this.showToast('Calorie goal updated', 'success');
+                } catch (err) {
+                    console.warn('Could not save goal to settings', err);
+                    this.showToast('Could not save calorie goal', 'error');
+                }
+            }
+
+            // Update theme icon
+            updateThemeIcon() {
+                const themeIcon = document.querySelector('.theme-icon');
+                if (!themeIcon) return;
+
+                const currentTheme = this.settings.theme || 'dark';
+                themeIcon.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
+            }
+
+            // Escape HTML to prevent XSS
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Show toast notification
+            showToast(message, type = 'success') {
+                // Remove existing toast if any
+                const existingToast = document.querySelector('.toast-notification');
+                if (existingToast) {
+                    existingToast.remove();
+                }
+
+                // Create toast element
+                const toast = document.createElement('div');
+                toast.className = `toast-notification toast-${type}`;
+                toast.textContent = message;
+
+                // Add styles
+                Object.assign(toast.style, {
+                    position: 'fixed',
+                    top: '20px',
+                    right: '20px',
+                    padding: '12px 24px',
+                    borderRadius: '8px',
+                    color: 'white',
+                    fontWeight: '500',
+                    zIndex: '10000',
+                    transform: 'translateX(100%)',
+                    transition: 'transform 0.3s ease',
+                    backgroundColor: type === 'error' ? '#ef4444' : '#10b981',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                });
+
+                document.body.appendChild(toast);
+
+                // Animate in
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(0)';
+                }, 100);
+
+                // Auto remove after 3 seconds
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                window.nutritionManager = new NutritionManager();
+            });
+        } else {
+            window.nutritionManager = new NutritionManager();
+        }
+
+        // Cross-tab sync: listen for storage changes and apply settings when updated
+        window.addEventListener('storage', (ev) => {
+            try {
+                if (!ev.key) return;
+                if (ev.key === 'fitlife_settings' || ev.key === 'fitlife_settings_last_update') {
+                    const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+                    if (settings.theme) {
+                        document.body.setAttribute('data-theme', settings.theme);
+                        document.documentElement.setAttribute('data-theme', settings.theme);
+                    }
+                    if (settings.accentColor) {
+                        document.documentElement.style.setProperty('--primary-color', settings.accentColor);
+                        document.documentElement.style.setProperty('--accent-color', settings.accentColor);
+                        try {
+                            const hex = settings.accentColor;
+                            const cleaned = hex.replace('#', '').trim();
+                            let r, g, b;
+                            if (cleaned.length === 3) {
+                                r = parseInt(cleaned[0] + cleaned[0], 16);
+                                g = parseInt(cleaned[1] + cleaned[1], 16);
+                                b = parseInt(cleaned[2] + cleaned[2], 16);
+                            } else {
+                                r = parseInt(cleaned.substring(0,2), 16);
+                                g = parseInt(cleaned.substring(2,4), 16);
+                                b = parseInt(cleaned.substring(4,6), 16);
+                            }
+                            document.documentElement.style.setProperty('--primary-rgb', `${r}, ${g}, ${b}`);
+                        } catch (err) {
+                            console.warn('Could not parse accent color on nutrition storage event', err);
+                        }
+                    }
+                }
+                // meals updated in another tab -> reload
+                if (ev.key === 'fitlife_meals' || ev.key === 'fitlife_meals_last_update') {
+                    try {
+                        if (window.nutritionManager) {
+                            window.nutritionManager.meals = JSON.parse(localStorage.getItem('fitlife_meals') || '[]');
+                            window.nutritionManager.renderMeals();
+                            window.nutritionManager.updateCalorieSummary();
+                        }
+                    } catch (err) {
+                        console.warn('Error reloading meals from storage event', err);
+                    }
+                }
+            } catch (err) {
+                console.warn('Error handling storage event on nutrition page', err);
+            }
+        });
+    </script>
+</body>
+</html>

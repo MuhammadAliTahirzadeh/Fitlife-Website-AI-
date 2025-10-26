@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Deployment Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: #13ecc8;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0fc7a8;
+        }
+        .status {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .success { background: #0f5132; color: #d1e7dd; }
+        .error { background: #721c24; color: #f8d7da; }
+        .info { background: #084298; color: #cff4fc; }
+    </style>
+</head>
+<body>
+    <h1>FitLife Deployment Test</h1>
+    <p>This page will help you test if the website works correctly when deployed.</p>
+
+    <div class="test-section">
+        <h3>1. JavaScript Loading Test</h3>
+        <div id="jsTest" class="status info">Testing JavaScript...</div>
+        <button class="test-button" onclick="testJavaScript()">Test JS</button>
+    </div>
+
+    <div class="test-section">
+        <h3>2. LocalStorage Test</h3>
+        <div id="localStorageTest" class="status info">Testing localStorage...</div>
+        <button class="test-button" onclick="testLocalStorage()">Test Storage</button>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Navigation Test</h3>
+        <div id="navigationTest" class="status info">Testing navigation...</div>
+        <button class="test-button" onclick="testNavigation()">Test Navigation</button>
+    </div>
+
+    <div class="test-section">
+        <h3>4. FitLife App Test</h3>
+        <div id="appTest" class="status info">Testing FitLife app...</div>
+        <button class="test-button" onclick="testFitLifeApp()">Test App</button>
+    </div>
+
+    <div class="test-section">
+        <h3>5. Quick Navigation</h3>
+        <button class="test-button" onclick="window.location.href='index.html'">Go to Dashboard</button>
+        <button class="test-button" onclick="window.location.href='workout.html'">Go to Workout</button>
+        <button class="test-button" onclick="window.location.href='nutrition.html'">Go to Nutrition</button>
+        <button class="test-button" onclick="window.location.href='note.html'">Go to Notes</button>
+        <button class="test-button" onclick="window.location.href='settings.html'">Go to Settings</button>
+    </div>
+
+    <script>
+        function updateStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = `status ${type}`;
+        }
+
+        function testJavaScript() {
+            try {
+                updateStatus('jsTest', 'JavaScript is working correctly!', 'success');
+            } catch (error) {
+                updateStatus('jsTest', `JavaScript error: ${error.message}`, 'error');
+            }
+        }
+
+        function testLocalStorage() {
+            try {
+                const testKey = 'deployment_test';
+                const testValue = 'test_data_' + Date.now();
+                
+                localStorage.setItem(testKey, JSON.stringify(testValue));
+                const retrieved = JSON.parse(localStorage.getItem(testKey));
+                localStorage.removeItem(testKey);
+                
+                if (retrieved === testValue) {
+                    updateStatus('localStorageTest', 'localStorage is working correctly!', 'success');
+                } else {
+                    updateStatus('localStorageTest', 'localStorage data mismatch', 'error');
+                }
+            } catch (error) {
+                updateStatus('localStorageTest', `localStorage error: ${error.message}`, 'error');
+            }
+        }
+
+        function testNavigation() {
+            try {
+                // Test if navigation function exists
+                if (typeof navigateToPage === 'function') {
+                    updateStatus('navigationTest', 'Navigation function exists and is callable', 'success');
+                } else {
+                    updateStatus('navigationTest', 'navigateToPage function not found - may need to load script.js', 'error');
+                }
+            } catch (error) {
+                updateStatus('navigationTest', `Navigation error: ${error.message}`, 'error');
+            }
+        }
+
+        function testFitLifeApp() {
+            try {
+                // Load the script if not already loaded
+                if (!window.app && !window.FitLifeApp) {
+                    const script = document.createElement('script');
+                    script.src = 'script.js';
+                    script.onload = function() {
+                        setTimeout(() => {
+                            if (window.app) {
+                                updateStatus('appTest', 'FitLife app loaded and initialized successfully!', 'success');
+                            } else {
+                                updateStatus('appTest', 'FitLife app failed to initialize', 'error');
+                            }
+                        }, 500);
+                    };
+                    script.onerror = function() {
+                        updateStatus('appTest', 'Failed to load script.js', 'error');
+                    };
+                    document.head.appendChild(script);
+                } else if (window.app) {
+                    updateStatus('appTest', 'FitLife app is already loaded and working!', 'success');
+                } else {
+                    updateStatus('appTest', 'FitLife app class exists but not initialized', 'info');
+                }
+            } catch (error) {
+                updateStatus('appTest', `FitLife app error: ${error.message}`, 'error');
+            }
+        }
+
+        // Global navigation function for testing
+        function navigateToPage(page) {
+            window.location.href = page;
+        }
+
+        // Auto-run basic tests
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                testJavaScript();
+                testLocalStorage();
+                testNavigation();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

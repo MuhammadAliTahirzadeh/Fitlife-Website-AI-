@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Workout</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_6_543)">
+                        <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+                        <path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_6_543">
+                            <rect fill="white" height="48" width="48"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h1 class="logo-text">FitLife</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="workout.html" class="nav-link active">Workout</a>
+                <a href="nutrition.html" class="nav-link">Nutrition</a>
+                <a href="note.html" class="nav-link">Note</a>
+                <a href="settings.html" class="nav-link">Settings</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="material-symbols-outlined theme-icon">light_mode</span>
+                </button>
+                <div class="profile-avatar"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="content-container">
+                <div class="page-title">
+                    <h2>Workout Planner</h2>
+                    <p class="page-description">Plan your fitness journey with our intuitive workout planner. Add exercises, set goals, and track your progress effortlessly.</p>
+                </div>
+
+                <!-- Workout Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="material-symbols-outlined stats-icon">fitness_center</span>
+                            <p class="stats-label">Total Exercises</p>
+                        </div>
+                        <p class="stats-value" id="totalExercises">5</p>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="material-symbols-outlined stats-icon">check_circle</span>
+                            <p class="stats-label">Completed Today</p>
+                        </div>
+                        <p class="stats-value" id="completedExercises">0</p>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="material-symbols-outlined stats-icon">timer</span>
+                            <p class="stats-label">Estimated Time</p>
+                        </div>
+                        <p class="stats-value">
+                            <span id="estimatedTime">45</span>
+                            <span class="stats-unit">min</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <h3 class="section-title">Filter Exercises</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
+                            <span class="material-symbols-outlined">apps</span>
+                            All
+                        </button>
+                        <button class="filter-btn" data-filter="legs">
+                            <span class="material-symbols-outlined">directions_run</span>
+                            Legs
+                        </button>
+                        <button class="filter-btn" data-filter="arms">
+                            <span class="material-symbols-outlined">fitness_center</span>
+                            Arms
+                        </button>
+                        <button class="filter-btn" data-filter="core">
+                            <span class="material-symbols-outlined">self_improvement</span>
+                            Core
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Todo List Section -->
+                <div class="todo-section">
+                    <div class="todo-header">
+                        <h3 class="section-title">Today's Workout</h3>
+                    <button class="add-exercise-btn" id="addExerciseBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            Add Exercise
+                        </button>
+                    </div>
+                    
+                    <div class="todo-list-container">
+                        <div class="todo-list" id="workoutList">
+                            <!-- Workout items will be populated by JavaScript -->
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div class="empty-state" id="emptyState" style="display: none;">
+                            <div class="empty-state-icon">
+                                <span class="material-symbols-outlined">fitness_center</span>
+                            </div>
+                            <h4>No exercises yet</h4>
+                            <p>Start building your workout routine by adding your first exercise.</p>
+                            <button class="btn-primary" onclick="document.getElementById('addExerciseBtn').click()">
+                                <span class="material-symbols-outlined">add</span>
+                                Add Your First Exercise
+                    </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <h3 class="section-title">Workout Progress</h3>
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <span class="material-symbols-outlined">trending_up</span>
+                            <h4>Today's Progress</h4>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span class="progress-text">
+                                <span id="completedCount">0</span> of <span id="totalCount">5</span> exercises completed
+                            </span>
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calories Burned Section -->
+                <div class="calories-burned-section">
+                    <h3 class="section-title">Calories Burned Today</h3>
+                    <div class="calories-burned-card">
+                        <div class="calories-display">
+                            <span class="material-symbols-outlined calories-icon">local_fire_department</span>
+                            <div class="calories-info">
+                                <p class="calories-value" id="totalCaloriesBurned">0</p>
+                                <p class="calories-label">kcal burned</p>
+                            </div>
+                        </div>
+                        <div class="calories-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Completed Exercises</span>
+                                <span class="breakdown-value" id="completedCalories">0 kcal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Add Exercise Modal -->
+        <div class="modal" id="addExerciseModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Exercise</h3>
+                    <button class="modal-close" id="closeModal">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <form id="addExerciseForm" class="exercise-form">
+                    <div class="form-group">
+                        <label for="exerciseName">Exercise Name</label>
+                        <input type="text" id="exerciseName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseSets">Sets</label>
+                        <input type="number" id="exerciseSets" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseReps">Reps</label>
+                        <input type="number" id="exerciseReps" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseCategory">Category</label>
+                        <select id="exerciseCategory" required>
+                            <option value="">Select category</option>
+                            <option value="legs">Legs</option>
+                            <option value="arms">Arms</option>
+                            <option value="core">Core</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exerciseCalories">Calories Burned</label>
+                        <input type="number" id="exerciseCalories" min="1" placeholder="e.g., 50" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Exercise</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Clean and Simple To-Do List JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('To-Do List initializing...');
+            
+            // Initialize the to-do list
+            initTodoList();
+            
+            // Load profile image and setup navigation
+            loadProfileImage();
+            setupProfileNavigation();
+            
+            // Setup theme toggle
+            setupThemeToggle();
+        });
+
+        // Load profile image from localStorage
+        function loadProfileImage() {
+            const savedImage = localStorage.getItem('fitlife_profile_image');
+            if (savedImage) {
+                const profileAvatars = document.querySelectorAll('.profile-avatar');
+                profileAvatars.forEach(avatar => {
+                    avatar.style.backgroundImage = `url(${savedImage})`;
+                    avatar.style.backgroundSize = 'cover';
+                    avatar.style.backgroundPosition = 'center';
+                });
+            }
+        }
+
+        // Setup profile avatar navigation to settings
+        function setupProfileNavigation() {
+            const profileAvatars = document.querySelectorAll('.profile-avatar');
+            profileAvatars.forEach(avatar => {
+                avatar.addEventListener('click', () => {
+                    window.location.href = 'settings.html#profile';
+                });
+                avatar.style.cursor = 'pointer';
+            });
+        }
+
+        // Setup theme toggle
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (!themeToggle) return;
+
+            // Load current theme from settings
+            const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+            const currentTheme = settings.theme || 'dark';
+            
+            // Apply theme
+            document.body.setAttribute('data-theme', currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            // Apply accent color if present
+            if (settings.accentColor) {
+                document.documentElement.style.setProperty('--primary-color', settings.accentColor);
+                document.documentElement.style.setProperty('--accent-color', settings.accentColor);
+                // compute rgb
+                try {
+                    const hex = settings.accentColor;
+                    const cleaned = hex.replace('#', '').trim();
+                    let r, g, b;
+                    if (cleaned.length === 3) {
+                        r = parseInt(cleaned[0] + cleaned[0], 16);
+                        g = parseInt(cleaned[1] + cleaned[1], 16);
+                        b = parseInt(cleaned[2] + cleaned[2], 16);
+                    } else {
+                        r = parseInt(cleaned.substring(0,2), 16);
+                        g = parseInt(cleaned.substring(2,4), 16);
+                        b = parseInt(cleaned.substring(4,6), 16);
+                    }
+                    document.documentElement.style.setProperty('--primary-rgb', `${r}, ${g}, ${b}`);
+                } catch (e) {
+                    console.warn('Could not parse accent color on workout page', e);
+                }
+            }
+            
+            // Update icon
+            updateThemeIcon(currentTheme);
+
+            // Add click event
+            themeToggle.addEventListener('click', function() {
+                toggleTheme();
+            });
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+            const currentTheme = settings.theme || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // Add rotation animation
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.classList.add('rotating');
+                setTimeout(() => {
+                    themeToggle.classList.remove('rotating');
+                }, 500);
+            }
+
+            // Update settings
+            settings.theme = newTheme;
+            try {
+                localStorage.setItem('fitlife_settings', JSON.stringify(settings));
+                localStorage.setItem('fitlife_settings_last_update', Date.now().toString());
+            } catch (err) {
+                console.warn('Could not persist settings during theme toggle on workout page', err);
+            }
+
+            try {
+                window.dispatchEvent(new CustomEvent('fitlife_settings_updated', { detail: settings }));
+            } catch (e) {
+                console.warn('Could not dispatch settings update from workout page', e);
+            }
+
+            // Apply theme to both body and documentElement
+            document.body.setAttribute('data-theme', newTheme);
+            document.documentElement.setAttribute('data-theme', newTheme);
+
+            // Update icon
+            updateThemeIcon(newTheme);
+        }
+
+        // Update theme icon
+        function updateThemeIcon(theme) {
+            const themeIcon = document.querySelector('.theme-icon');
+            if (themeIcon) {
+                themeIcon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+            }
+        }
+
+        // Main initialization function
+        function initTodoList() {
+            // Load existing data or create default
+            loadTodoData();
+            
+            // Render the list
+            renderTodoList();
+            
+            // Update progress
+            updateProgress();
+            
+            // Setup all event listeners
+            setupEventListeners();
+            
+            console.log('To-Do List initialized successfully');
+        }
+
+        // Cross-tab settings sync: update accent color and theme when settings change elsewhere
+        window.addEventListener('storage', (ev) => {
+            try {
+                if (!ev.key) return;
+                if (ev.key === 'fitlife_settings' || ev.key === 'fitlife_settings_last_update') {
+                    const settings = JSON.parse(localStorage.getItem('fitlife_settings') || '{}');
+                    if (settings.theme) {
+                        document.body.setAttribute('data-theme', settings.theme);
+                        updateThemeIcon(settings.theme);
+                    }
+                    if (settings.accentColor) {
+                        document.documentElement.style.setProperty('--primary-color', settings.accentColor);
+                        document.documentElement.style.setProperty('--accent-color', settings.accentColor);
+                        try {
+                            const hex = settings.accentColor;
+                            const cleaned = hex.replace('#', '').trim();
+                            let r, g, b;
+                            if (cleaned.length === 3) {
+                                r = parseInt(cleaned[0] + cleaned[0], 16);
+                                g = parseInt(cleaned[1] + cleaned[1], 16);
+                                b = parseInt(cleaned[2] + cleaned[2], 16);
+                            } else {
+                                r = parseInt(cleaned.substring(0,2), 16);
+                                g = parseInt(cleaned.substring(2,4), 16);
+                                b = parseInt(cleaned.substring(4,6), 16);
+                            }
+                            document.documentElement.style.setProperty('--primary-rgb', `${r}, ${g}, ${b}`);
+                        } catch (err) {
+                            console.warn('Could not parse accent color on storage event', err);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('Error handling storage event on workout page', err);
+            }
+        });
+
+        // Load todo data from localStorage
+        function loadTodoData() {
+            const stored = localStorage.getItem('workout_todos');
+            if (stored) {
+                window.todoData = JSON.parse(stored);
+            } else {
+                // Default exercises with calories
+                window.todoData = [
+                    { id: 1, name: 'Squats', sets: 3, reps: 12, category: 'legs', calories: 50, completed: false, icon: 'fitness_center' },
+                    { id: 2, name: 'Push-ups', sets: 3, reps: 15, category: 'arms', calories: 40, completed: false, icon: 'exercise' },
+                    { id: 3, name: 'Crunches', sets: 3, reps: 20, category: 'core', calories: 30, completed: false, icon: 'self_improvement' },
+                    { id: 4, name: 'Pull-ups', sets: 3, reps: 10, category: 'arms', calories: 60, completed: false, icon: 'sports_gymnastics' },
+                    { id: 5, name: 'Lunges', sets: 3, reps: 15, category: 'legs', calories: 45, completed: false, icon: 'accessibility_new' }
+                ];
+                saveTodoData();
+            }
+        }
+
+        // Save todo data to localStorage
+        function saveTodoData() {
+            localStorage.setItem('workout_todos', JSON.stringify(window.todoData));
+        }
+
+        // Render the todo list
+        function renderTodoList() {
+            const workoutList = document.getElementById('workoutList');
+            if (!workoutList) return;
+
+            workoutList.innerHTML = window.todoData.map(todo => `
+                <div class="workout-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+                    <div class="workout-icon">
+                        <span class="material-symbols-outlined">${todo.icon}</span>
+                    </div>
+                    <div class="workout-content">
+                        <p class="workout-name">${todo.name}</p>
+                        <p class="workout-details">${todo.sets} sets of ${todo.reps} reps</p>
+                    </div>
+                    <div class="workout-calories-badge">
+                        <span class="material-symbols-outlined">local_fire_department</span>
+                        <span>${todo.calories || 0} kcal</span>
+                    </div>
+                    <div class="workout-actions">
+                        <input type="checkbox" class="workout-checkbox" ${todo.completed ? 'checked' : ''} 
+                               data-todo-id="${todo.id}">
+                        <button class="workout-menu" data-todo-id="${todo.id}" data-action="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateCaloriesDisplay();
+        }
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Checkbox functionality
+            document.addEventListener('change', function(e) {
+                if (e.target.classList.contains('workout-checkbox')) {
+                    toggleTodoComplete(e.target);
+                }
+            });
+
+            // Delete functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.workout-menu')) {
+                    deleteTodo(e.target.closest('.workout-menu'));
+                }
+            });
+
+            // Add exercise button
+            const addBtn = document.getElementById('addExerciseBtn');
+            if (addBtn) {
+                addBtn.addEventListener('click', showAddModal);
+            }
+
+            // Modal functionality
+            setupModalEvents();
+
+            // Filter buttons
+            setupFilterButtons();
+        }
+
+        // Toggle todo completion
+        function toggleTodoComplete(checkbox) {
+            const todoId = parseInt(checkbox.dataset.todoId);
+            const todo = window.todoData.find(t => t.id === todoId);
+            const todoItem = checkbox.closest('.workout-item');
+            
+            if (todo) {
+                todo.completed = checkbox.checked;
+                todoItem.classList.toggle('completed', checkbox.checked);
+                saveTodoData();
+                updateProgress();
+                updateCaloriesDisplay();
+                console.log(`Exercise "${todo.name}" ${todo.completed ? 'completed' : 'uncompleted'}`);
+            }
+        }
+
+        // Delete todo
+        function deleteTodo(deleteBtn) {
+            const todoId = parseInt(deleteBtn.dataset.todoId);
+            const todo = window.todoData.find(t => t.id === todoId);
+            
+            if (todo && confirm(`Are you sure you want to delete "${todo.name}"?`)) {
+                window.todoData = window.todoData.filter(t => t.id !== todoId);
+                saveTodoData();
+                renderTodoList();
+                updateProgress();
+                console.log(`Exercise "${todo.name}" deleted`);
+            }
+        }
+
+        // Update progress statistics
+        function updateProgress() {
+            const total = window.todoData.length;
+            const completed = window.todoData.filter(t => t.completed).length;
+            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+            // Update stats
+            const totalEl = document.getElementById('totalExercises');
+            const completedEl = document.getElementById('completedExercises');
+            const timeEl = document.getElementById('estimatedTime');
+
+            if (totalEl) totalEl.textContent = total;
+            if (completedEl) completedEl.textContent = completed;
+            if (timeEl) timeEl.textContent = Math.max(5, total * 8);
+
+            // Update progress bar
+            const progressFill = document.getElementById('progressFill');
+            const completedCount = document.getElementById('completedCount');
+            const totalCount = document.getElementById('totalCount');
+            const progressPercentage = document.getElementById('progressPercentage');
+
+            if (progressFill) progressFill.style.width = `${percentage}%`;
+            if (completedCount) completedCount.textContent = completed;
+            if (totalCount) totalCount.textContent = total;
+            if (progressPercentage) progressPercentage.textContent = `${percentage}%`;
+        }
+
+        // Modal functionality
+        function setupModalEvents() {
+            const modal = document.getElementById('addExerciseModal');
+            const closeBtn = document.getElementById('closeModal');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const form = document.getElementById('addExerciseForm');
+
+            if (closeBtn) closeBtn.addEventListener('click', hideModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', hideModal);
+            
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) hideModal();
+                });
+            }
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    addNewTodo();
+                });
+            }
+
+            // ESC key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+                    hideModal();
+                }
+            });
+        }
+
+        // Show add modal
+        function showAddModal() {
+            const modal = document.getElementById('addExerciseModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        // Hide modal
+        function hideModal() {
+            const modal = document.getElementById('addExerciseModal');
+            const form = document.getElementById('addExerciseForm');
+            if (modal) modal.classList.remove('active');
+            if (form) form.reset();
+        }
+
+        // Add new todo
+        function addNewTodo() {
+            const name = document.getElementById('exerciseName').value;
+            const sets = parseInt(document.getElementById('exerciseSets').value);
+            const reps = parseInt(document.getElementById('exerciseReps').value);
+            const category = document.getElementById('exerciseCategory').value;
+            const calories = parseInt(document.getElementById('exerciseCalories').value);
+
+            if (!name || !sets || !reps || !category || !calories) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const iconMap = {
+                'legs': 'directions_run',
+                'arms': 'fitness_center',
+                'core': 'self_improvement'
+            };
+
+            const newTodo = {
+                id: Date.now(),
+                name: name,
+                sets: sets,
+                reps: reps,
+                category: category,
+                calories: calories,
+                completed: false,
+                icon: iconMap[category] || 'exercise'
+            };
+
+            window.todoData.push(newTodo);
+            saveTodoData();
+            renderTodoList();
+            updateProgress();
+            hideModal();
+            
+            console.log(`New exercise added: ${newTodo.name}`);
+        }
+
+        // Update calories display
+        function updateCaloriesDisplay() {
+            const completedCalories = window.todoData
+                .filter(t => t.completed)
+                .reduce((sum, t) => sum + (t.calories || 0), 0);
+            
+            // Update display elements
+            const totalEl = document.getElementById('totalCaloriesBurned');
+            const completedEl = document.getElementById('completedCalories');
+            
+            if (totalEl) totalEl.textContent = completedCalories;
+            if (completedEl) completedEl.textContent = `${completedCalories} kcal`;
+            
+            // Save to localStorage for use in other pages
+            localStorage.setItem('workout_calories_burned', completedCalories.toString());
+        }
+
+        // Filter functionality
+        function setupFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    filterTodos(filter);
+                });
+            });
+        }
+
+        // Filter todos
+        function filterTodos(filter) {
+            let filteredData = window.todoData;
+            
+            if (filter !== 'all') {
+                filteredData = window.todoData.filter(todo => todo.category === filter);
+            }
+            
+            renderFilteredTodos(filteredData);
+            console.log(`Filtered by: ${filter}`);
+        }
+
+        // Render filtered todos
+        function renderFilteredTodos(todos) {
+            const workoutList = document.getElementById('workoutList');
+            if (!workoutList) return;
+
+            workoutList.innerHTML = todos.map(todo => `
+                <div class="workout-item ${todo.completed ? 'completed' : ''}" data-id="${todo.id}">
+                    <div class="workout-icon">
+                        <span class="material-symbols-outlined">${todo.icon}</span>
+                    </div>
+                    <div class="workout-content">
+                        <p class="workout-name">${todo.name}</p>
+                        <p class="workout-details">${todo.sets} sets of ${todo.reps} reps</p>
+                    </div>
+                    <div class="workout-actions">
+                        <input type="checkbox" class="workout-checkbox" ${todo.completed ? 'checked' : ''} 
+                               data-todo-id="${todo.id}">
+                        <button class="workout-menu" data-todo-id="${todo.id}" data-action="delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

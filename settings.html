@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Settings</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_6_543)">
+                        <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+                        <path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_6_543">
+                            <rect fill="white" height="48" width="48"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h1 class="logo-text">FitLife</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <a href="workout.html" class="nav-link">Workout</a>
+                <a href="nutrition.html" class="nav-link">Nutrition</a>
+                <a href="note.html" class="nav-link">Note</a>
+                <a href="settings.html" class="nav-link active">Settings</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="material-symbols-outlined theme-icon">light_mode</span>
+                </button>
+                <div class="profile-avatar"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="settings-container">
+                <div class="settings-grid">
+                    <!-- User Preferences -->
+                    <div class="settings-card settings-compact settings-half">
+                        <h3 class="settings-title">User Preferences</h3>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <span class="setting-label">Preferred Measurement Units</span>
+                                <div class="button-group">
+                                    <button class="toggle-btn active" data-unit="metric">Metric</button>
+                                    <button class="toggle-btn" data-unit="imperial">Imperial</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span class="setting-label">Motivational Quotes</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="motivationalQuotes" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appearance -->
+                    <div class="settings-card settings-compact settings-half">
+                        <h3 class="settings-title">Appearance</h3>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <span class="setting-label">Theme</span>
+                                <div class="button-group">
+                                    <button class="toggle-btn" data-theme="light">Light</button>
+                                    <button class="toggle-btn active" data-theme="dark">Dark</button>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <span class="setting-label">Accent Color</span>
+                                <div class="color-picker">
+                                    <button class="color-option active" data-color="#13ecc8" style="background-color: #13ecc8;"></button>
+                                    <button class="color-option" data-color="#3b82f6" style="background-color: #3b82f6;"></button>
+                                    <button class="color-option" data-color="#ec4899" style="background-color: #ec4899;"></button>
+                                    <button class="color-option" data-color="#eab308" style="background-color: #eab308;"></button>
+                                    <button class="color-option" data-color="#8b5cf6" style="background-color: #8b5cf6;"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="settings-card">
+                        <h3 class="settings-title">Notifications</h3>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <span class="setting-label">Workout Reminders</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="workoutReminders" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <span class="setting-label">Nutrition Reminders</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="nutritionReminders" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <span class="setting-label">Daily Progress Updates</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="progressUpdates">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    <div class="settings-card" id="profile">
+                        <h3 class="settings-title">Profile</h3>
+                        <div class="settings-content">
+                            <div class="profile-section">
+                                <div class="profile-avatar-large" id="profileAvatarLarge">
+                                    <div class="profile-avatar-upload">
+                                        <span class="material-symbols-outlined">photo_camera</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+                                <div class="profile-info">
+                                    <div class="form-group">
+                                        <label for="userName">Name</label>
+                                        <input type="text" id="userName" value="Alex Johnson">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="userEmail">Email</label>
+                                        <input type="email" id="userEmail" value="alex.j@example.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="form-group">
+                                    <label for="userAge">Age</label>
+                                    <input type="number" id="userAge" value="28" min="10" max="120">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userWeight">Weight (kg)</label>
+                                    <input type="number" id="userWeight" value="70" min="30" max="300" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userHeight">Height (cm)</label>
+                                    <input type="number" id="userHeight" value="175" min="100" max="250">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calorie Balance Calculator -->
+                    <div class="settings-card calorie-balance-card">
+                        <h3 class="settings-title">Calorie Balance</h3>
+                        <div class="settings-content">
+                            <div class="calorie-balance-display">
+                                <div class="balance-item consumed">
+                                    <span class="material-symbols-outlined balance-icon">restaurant_menu</span>
+                                    <div class="balance-info">
+                                        <p class="balance-label">Calories Consumed</p>
+                                        <p class="balance-value" id="caloriesConsumed">0</p>
+                                    </div>
+                                </div>
+                                <div class="balance-operator">
+                                    <span class="material-symbols-outlined">remove</span>
+                                </div>
+                                <div class="balance-item burned">
+                                    <span class="material-symbols-outlined balance-icon">local_fire_department</span>
+                                    <div class="balance-info">
+                                        <p class="balance-label">Calories Burned</p>
+                                        <p class="balance-value" id="caloriesBurned">0</p>
+                                    </div>
+                                </div>
+                                <div class="balance-operator">
+                                    <span class="material-symbols-outlined">drag_handle</span>
+                                </div>
+                                <div class="balance-item net">
+                                    <span class="material-symbols-outlined balance-icon">analytics</span>
+                                    <div class="balance-info">
+                                        <p class="balance-label">Net Calories</p>
+                                        <p class="balance-value" id="netCalories">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="balance-summary" id="balanceSummary">
+                                <p class="summary-text">Track your nutrition and workouts to see your calorie balance.</p>
+                                <div class="goal-display" style="margin-top:0.75rem; display:flex; align-items:center; gap:0.75rem;">
+                                    <strong style="font-weight:600;">Daily Goal:</strong>
+                                    <span id="settingsGoalDisplay" style="font-weight:700; color:var(--primary-color);">2500</span>
+                                    <span style="color:var(--text-secondary);">kcal</span>
+                                    <a href="nutrition.html" class="action-btn" id="editGoalFromSettings" style="margin-left:auto;">Edit in Nutrition</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account & Data -->
+                    <div class="settings-card account-data">
+                        <h3 class="settings-title">Account & Data</h3>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <span class="setting-label">Export Data</span>
+                                <button class="action-btn" id="exportDataBtn">Export</button>
+                            </div>
+                            <div class="setting-item">
+                                <span class="setting-label">Import Data</span>
+                                <button class="action-btn" id="importDataBtn">Import</button>
+                                <input type="file" id="importFile" accept=".json" style="display: none;">
+                            </div>
+                            <div class="divider"></div>
+                            <div class="danger-section">
+                                <button class="danger-btn" id="resetDataBtn">Reset All Data</button>
+                                <p class="danger-description">This action cannot be undone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Reset Confirmation Modal -->
+        <div class="modal" id="resetModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Reset All Data</h3>
+                    <button class="modal-close" id="closeResetModal">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to reset all data? This will permanently delete:</p>
+                    <ul>
+                        <li>All workout exercises and progress</li>
+                        <li>All nutrition logs and meals</li>
+                        <li>All notes and personal content</li>
+                        <li>All settings and preferences</li>
+                    </ul>
+                    <p><strong>This action cannot be undone.</strong></p>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelResetBtn">Cancel</button>
+                    <button type="button" class="btn-danger" id="confirmResetBtn">Reset All Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FitLife Settings Page JavaScript
+        class SettingsManager {
+            constructor() {
+                this.data = {
+                    settings: this.safeParseJSON('fitlife_settings') || {
+                        calorieGoal: 2500,
+                        units: 'metric',
+                        motivationalQuotes: true,
+                        theme: 'dark',
+                        accentColor: '#13ecc8',
+                        workoutReminders: true,
+                        nutritionReminders: true,
+                        progressUpdates: false,
+                        profile: {
+                            name: 'Alex Johnson',
+                            email: 'alex.j@example.com',
+                            age: 28,
+                            weight: 70,
+                            height: 175
+                        }
+                    }
+                };
+                
+                this.init();
+            }
+
+                // Helper to convert hex color to RGB object {r,g,b}
+                static hexToRgb(hex) {
+                    if (!hex) return null;
+                    const cleaned = hex.replace('#', '').trim();
+                    if (cleaned.length === 3) {
+                        const r = parseInt(cleaned[0] + cleaned[0], 16);
+                        const g = parseInt(cleaned[1] + cleaned[1], 16);
+                        const b = parseInt(cleaned[2] + cleaned[2], 16);
+                        return { r, g, b };
+                    } else if (cleaned.length === 6) {
+                        const r = parseInt(cleaned.substring(0, 2), 16);
+                        const g = parseInt(cleaned.substring(2, 4), 16);
+                        const b = parseInt(cleaned.substring(4, 6), 16);
+                        return { r, g, b };
+                    }
+                    return null;
+                }
+
+            // Safe JSON parsing with error handling
+            safeParseJSON(key) {
+                try {
+                    const item = localStorage.getItem(key);
+                    return item ? JSON.parse(item) : null;
+                } catch (error) {
+                    console.warn(`Error parsing localStorage item ${key}:`, error);
+                    return null;
+                }
+            }
+
+            init() {
+                this.loadSettingsValues();
+                this.setupEventListeners();
+                this.applyTheme(this.data.settings.theme);
+                this.applyAccentColor(this.data.settings.accentColor);
+                this.loadProfileImage();
+                this.scrollToProfileIfNeeded();
+                this.setupHeaderThemeToggle();
+                this.updateCalorieBalance();
+                
+                // Update calorie balance every 2 seconds
+                setInterval(() => this.updateCalorieBalance(), 2000);
+            }
+
+            // Load current settings into UI elements
+            loadSettingsValues() {
+                const settings = this.data.settings;
+                
+                // Calorie Goal
+                const calorieGoal = document.getElementById('calorieGoal');
+                const calorieRange = document.getElementById('calorieRange');
+                if (calorieGoal && calorieRange) {
+                    calorieGoal.value = settings.calorieGoal;
+                    calorieRange.value = settings.calorieGoal;
+                }
+                
+                // Unit buttons
+                document.querySelectorAll('[data-unit]').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.unit === settings.units) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Theme buttons
+                document.querySelectorAll('[data-theme]').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.theme === settings.theme) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Color options
+                document.querySelectorAll('[data-color]').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.color === settings.accentColor) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Checkboxes
+                const motivationalQuotes = document.getElementById('motivationalQuotes');
+                const workoutReminders = document.getElementById('workoutReminders');
+                const nutritionReminders = document.getElementById('nutritionReminders');
+                const progressUpdates = document.getElementById('progressUpdates');
+                
+                if (motivationalQuotes) motivationalQuotes.checked = settings.motivationalQuotes;
+                if (workoutReminders) workoutReminders.checked = settings.workoutReminders;
+                if (nutritionReminders) nutritionReminders.checked = settings.nutritionReminders;
+                if (progressUpdates) progressUpdates.checked = settings.progressUpdates;
+                
+                // Profile fields
+                const userName = document.getElementById('userName');
+                const userEmail = document.getElementById('userEmail');
+                const userAge = document.getElementById('userAge');
+                const userWeight = document.getElementById('userWeight');
+                const userHeight = document.getElementById('userHeight');
+                
+                if (userName) userName.value = settings.profile.name;
+                if (userEmail) userEmail.value = settings.profile.email;
+                if (userAge) userAge.value = settings.profile.age;
+                if (userWeight) userWeight.value = settings.profile.weight;
+                if (userHeight) userHeight.value = settings.profile.height;
+            }
+
+            // Setup all event listeners
+            setupEventListeners() {
+                this.setupUnitButtons();
+                this.setupThemeButtons();
+                this.setupColorButtons();
+                this.setupCheckboxes();
+                this.setupProfileInputs();
+                this.setupDataManagement();
+                this.setupResetModal();
+                this.setupProfileImageUpload();
+                this.setupHeaderProfileNavigation();
+            }
+
+            // Measurement unit toggle buttons
+            setupUnitButtons() {
+                document.querySelectorAll('[data-unit]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Remove active class from all unit buttons
+                        document.querySelectorAll('[data-unit]').forEach(b => b.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        e.target.classList.add('active');
+                        
+                        // Update setting
+                        const unit = e.target.dataset.unit;
+                        this.updateSetting('units', unit);
+                        
+                        // Convert weight display if needed
+                        this.convertWeightDisplay(unit);
+                        
+                        this.showToast(`Measurement units changed to ${unit}`);
+                    });
+                });
+            }
+
+            // Theme toggle buttons
+            setupThemeButtons() {
+                document.querySelectorAll('[data-theme]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Remove active class from all theme buttons
+                        document.querySelectorAll('[data-theme]').forEach(b => b.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        e.target.classList.add('active');
+                        
+                        // Update setting and apply theme
+                        const theme = e.target.dataset.theme;
+                        this.updateSetting('theme', theme);
+                        this.applyTheme(theme);
+                        
+                        this.showToast(`Theme changed to ${theme}`);
+                    });
+                });
+            }
+
+            // Accent color buttons
+            setupColorButtons() {
+                document.querySelectorAll('[data-color]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Remove active class from all color buttons
+                        document.querySelectorAll('[data-color]').forEach(b => b.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        e.target.classList.add('active');
+                        
+                        // Update setting and apply color
+                        const color = e.target.dataset.color;
+                        this.updateSetting('accentColor', color);
+                        this.applyAccentColor(color);
+                        
+                        this.showToast('Accent color updated!');
+                    });
+                });
+            }
+
+            // Notification checkboxes (rewritten for clarity and reliability)
+            setupCheckboxes() {
+                // Helper to wire a checkbox by id with label text
+                const wireCheckbox = (id, labelText) => {
+                    const checkbox = document.getElementById(id);
+                    if (!checkbox) return;
+
+                    // Initialize ARIA and checked state from current settings
+                    checkbox.setAttribute('role', 'switch');
+                    checkbox.setAttribute('aria-checked', this.data.settings[id] ? 'true' : 'false');
+                    checkbox.checked = !!this.data.settings[id];
+
+                    // Listen for changes
+                    checkbox.addEventListener('change', (e) => {
+                        const isChecked = !!e.target.checked;
+                        // Update stored setting and persist
+                        this.updateSetting(id, isChecked);
+
+                        // Update aria
+                        e.target.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+
+                        // Notify user
+                        this.showToast(`${labelText} ${isChecked ? 'enabled' : 'disabled'}`);
+                    });
+                };
+
+                wireCheckbox('motivationalQuotes', 'Motivational Quotes');
+                wireCheckbox('workoutReminders', 'Workout Reminders');
+                wireCheckbox('nutritionReminders', 'Nutrition Reminders');
+                wireCheckbox('progressUpdates', 'Daily Progress Updates');
+            }
+
+            // Profile input fields
+            setupProfileInputs() {
+                const profileFields = [
+                    { id: 'userName', key: 'name', label: 'Name' },
+                    { id: 'userEmail', key: 'email', label: 'Email' },
+                    { id: 'userAge', key: 'age', label: 'Age', type: 'number' },
+                    { id: 'userWeight', key: 'weight', label: 'Weight', type: 'number' },
+                    { id: 'userHeight', key: 'height', label: 'Height', type: 'number' }
+                ];
+                
+                profileFields.forEach(field => {
+                    const input = document.getElementById(field.id);
+                    if (input) {
+                        input.addEventListener('change', (e) => {
+                            let value = e.target.value;
+                            
+                            // Convert to number if needed
+                            if (field.type === 'number') {
+                                value = parseFloat(value);
+                                if (isNaN(value)) return;
+                            }
+                            
+                            // Validate input
+                            if (this.validateProfileInput(field.key, value)) {
+                                this.updateProfileSetting(field.key, value);
+                                this.showToast(`${field.label} updated successfully!`);
+                            } else {
+                                // Reset to previous value
+                                input.value = this.data.settings.profile[field.key];
+                                this.showToast(`Invalid ${field.label.toLowerCase()}`, 'error');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Data management (export, import, reset)
+            setupDataManagement() {
+                const exportBtn = document.getElementById('exportDataBtn');
+                const importBtn = document.getElementById('importDataBtn');
+                const importFile = document.getElementById('importFile');
+                const resetBtn = document.getElementById('resetDataBtn');
+                
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', () => this.exportData());
+                }
+                
+                if (importBtn && importFile) {
+                    importBtn.addEventListener('click', () => importFile.click());
+                    importFile.addEventListener('change', (e) => {
+                        if (e.target.files[0]) {
+                            this.importData(e.target.files[0]);
+                        }
+                    });
+                }
+                
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        document.getElementById('resetModal').style.display = 'flex';
+                    });
+                }
+            }
+
+            // Reset confirmation modal
+            setupResetModal() {
+                const resetModal = document.getElementById('resetModal');
+                const closeBtn = document.getElementById('closeResetModal');
+                const cancelBtn = document.getElementById('cancelResetBtn');
+                const confirmBtn = document.getElementById('confirmResetBtn');
+                
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        resetModal.style.display = 'none';
+                    });
+                }
+                
+                if (cancelBtn) {
+                    cancelBtn.addEventListener('click', () => {
+                        resetModal.style.display = 'none';
+                    });
+                }
+                
+                if (confirmBtn) {
+                    confirmBtn.addEventListener('click', () => {
+                        this.resetAllData();
+                        resetModal.style.display = 'none';
+                    });
+                }
+                
+                // Close on outside click
+                if (resetModal) {
+                    resetModal.addEventListener('click', (e) => {
+                        if (e.target === resetModal) {
+                            resetModal.style.display = 'none';
+                        }
+                    });
+                }
+            }
+
+            // Setup profile image upload
+            setupProfileImageUpload() {
+                const profileAvatarLarge = document.getElementById('profileAvatarLarge');
+                const profileImageInput = document.getElementById('profileImageInput');
+                
+                if (profileAvatarLarge) {
+                    profileAvatarLarge.addEventListener('click', () => {
+                        profileImageInput.click();
+                    });
+                }
+                
+                if (profileImageInput) {
+                    profileImageInput.addEventListener('change', (e) => {
+                        const file = e.target.files[0];
+                        if (file && file.type.startsWith('image/')) {
+                            this.handleProfileImageUpload(file);
+                        } else {
+                            this.showToast('Please select a valid image file', 'error');
+                        }
+                    });
+                }
+            }
+
+            // Handle profile image upload
+            handleProfileImageUpload(file) {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    const imageData = e.target.result;
+                    
+                    // Save to localStorage
+                    try {
+                        localStorage.setItem('fitlife_profile_image', imageData);
+                        
+                        // Update all profile avatars
+                        this.updateProfileAvatars(imageData);
+                        
+                        this.showToast('Profile image updated successfully!', 'success');
+                    } catch (error) {
+                        console.error('Error saving profile image:', error);
+                        this.showToast('Error saving profile image. Image may be too large.', 'error');
+                    }
+                };
+                
+                reader.onerror = () => {
+                    this.showToast('Error reading image file', 'error');
+                };
+                
+                reader.readAsDataURL(file);
+            }
+
+            // Load profile image
+            loadProfileImage() {
+                const savedImage = localStorage.getItem('fitlife_profile_image');
+                if (savedImage) {
+                    this.updateProfileAvatars(savedImage);
+                    
+                    // Also update header profile avatar
+                    const headerAvatar = document.querySelector('.profile-avatar');
+                    if (headerAvatar) {
+                        headerAvatar.style.backgroundImage = `url(${savedImage})`;
+                        headerAvatar.style.backgroundSize = 'cover';
+                        headerAvatar.style.backgroundPosition = 'center';
+                    }
+                } else {
+                    // Set default gradient if no image
+                    const profileAvatarLarge = document.getElementById('profileAvatarLarge');
+                    if (profileAvatarLarge) {
+                        profileAvatarLarge.style.background = 'linear-gradient(135deg, var(--primary-color), #19d4b5)';
+                    }
+                }
+            }
+
+            // Update all profile avatars with image
+            updateProfileAvatars(imageData) {
+                const profileAvatarLarge = document.getElementById('profileAvatarLarge');
+                const headerAvatar = document.querySelector('.profile-avatar');
+                
+                if (profileAvatarLarge) {
+                    profileAvatarLarge.style.backgroundImage = `url(${imageData})`;
+                    profileAvatarLarge.style.backgroundSize = 'cover';
+                    profileAvatarLarge.style.backgroundPosition = 'center';
+                }
+                
+                if (headerAvatar) {
+                    headerAvatar.style.backgroundImage = `url(${imageData})`;
+                    headerAvatar.style.backgroundSize = 'cover';
+                    headerAvatar.style.backgroundPosition = 'center';
+                }
+            }
+
+            // Scroll to profile section if hash is present
+            scrollToProfileIfNeeded() {
+                if (window.location.hash === '#profile') {
+                    setTimeout(() => {
+                        const profileSection = document.getElementById('profile');
+                        if (profileSection) {
+                            profileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Add highlight effect
+                            profileSection.style.transition = 'all 0.3s ease';
+                            // Use CSS variable for primary rgb to keep box shadow in sync with accent color
+                            const primaryRgb = getComputedStyle(document.documentElement).getPropertyValue('--primary-rgb').trim() || '19, 236, 200';
+                            profileSection.style.boxShadow = `0 0 0 3px rgba(${primaryRgb}, 0.3)`;
+                            setTimeout(() => {
+                                profileSection.style.boxShadow = '';
+                            }, 2000);
+                        }
+                    }, 300);
+                }
+            }
+
+            // Setup header profile avatar navigation
+            setupHeaderProfileNavigation() {
+                const headerAvatar = document.querySelector('.profile-avatar');
+                if (headerAvatar) {
+                    headerAvatar.addEventListener('click', () => {
+                        const profileSection = document.getElementById('profile');
+                        if (profileSection) {
+                            profileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // Add highlight effect
+                            profileSection.style.transition = 'all 0.3s ease';
+                            const primaryRgb2 = getComputedStyle(document.documentElement).getPropertyValue('--primary-rgb').trim() || '19, 236, 200';
+                            profileSection.style.boxShadow = `0 0 0 3px rgba(${primaryRgb2}, 0.3)`;
+                            setTimeout(() => {
+                                profileSection.style.boxShadow = '';
+                            }, 2000);
+                        }
+                    });
+                    headerAvatar.style.cursor = 'pointer';
+                }
+            }
+
+            // Setup header theme toggle
+            setupHeaderThemeToggle() {
+                const themeToggle = document.getElementById('themeToggle');
+                if (!themeToggle) return;
+
+                // Update icon based on current theme
+                this.updateHeaderThemeIcon();
+
+                // Add click event listener
+                themeToggle.addEventListener('click', () => {
+                    this.toggleHeaderTheme();
+                });
+            }
+
+            // Toggle theme from header
+            toggleHeaderTheme() {
+                const currentTheme = this.data.settings.theme;
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                // Add rotation animation
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.classList.add('rotating');
+                    setTimeout(() => {
+                        themeToggle.classList.remove('rotating');
+                    }, 500);
+                }
+
+                // Update theme
+                this.updateSetting('theme', newTheme);
+                this.applyTheme(newTheme);
+                this.updateHeaderThemeIcon();
+                
+                // Also update the theme buttons in settings
+                document.querySelectorAll('[data-theme]').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.theme === newTheme) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            // Update header theme icon
+            updateHeaderThemeIcon() {
+                const themeIcon = document.querySelector('.theme-icon');
+                if (!themeIcon) return;
+
+                const currentTheme = this.data.settings.theme || 'dark';
+                themeIcon.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
+            }
+
+            // Update calorie balance calculator
+            updateCalorieBalance() {
+                // Get consumed calories from nutrition
+                const meals = this.safeParseJSON('fitlife_meals') || [];
+                const consumed = meals.reduce((sum, meal) => sum + (meal.calories || 0), 0);
+                
+                // Get burned calories from workout
+                const burned = parseInt(localStorage.getItem('workout_calories_burned') || '0');
+                
+                // Calculate net calories
+                const net = consumed - burned;
+                
+                // Update display
+                const consumedEl = document.getElementById('caloriesConsumed');
+                const burnedEl = document.getElementById('caloriesBurned');
+                const netEl = document.getElementById('netCalories');
+                const summaryEl = document.getElementById('balanceSummary');
+                
+                if (consumedEl) consumedEl.textContent = consumed;
+                if (burnedEl) burnedEl.textContent = burned;
+                if (netEl) {
+                    netEl.textContent = net;
+                    netEl.style.color = net > 0 ? 'var(--primary-color)' : '#ff6b00';
+                }
+                
+                // Update summary message
+                if (summaryEl) {
+                    let message = '';
+                    const goal = this.data.settings.calorieGoal || 2500;
+                    
+                    if (net > goal) {
+                        message = `⚠️ You're ${net - goal} kcal over your goal. Consider increasing your workout intensity.`;
+                        summaryEl.className = 'balance-summary warning';
+                    } else if (net > 0 && net <= goal) {
+                        message = `✅ Perfect balance! You have ${goal - net} kcal remaining for your goal.`;
+                        summaryEl.className = 'balance-summary success';
+                    } else if (net < 0) {
+                        message = `🔥 Great work! You've burned ${Math.abs(net)} more calories than consumed.`;
+                        summaryEl.className = 'balance-summary excellent';
+                    } else {
+                        message = 'Track your nutrition and workouts to see your calorie balance.';
+                        summaryEl.className = 'balance-summary';
+                    }
+                    
+                    summaryEl.innerHTML = `<p class="summary-text">${message}</p>`;
+                }
+            }
+
+            // Validate profile inputs
+            validateProfileInput(key, value) {
+                switch (key) {
+                    case 'name':
+                        return typeof value === 'string' && value.trim().length > 0;
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        return emailRegex.test(value);
+                    case 'age':
+                        return value >= 10 && value <= 120;
+                    case 'weight':
+                        return value >= 30 && value <= 300;
+                    case 'height':
+                        return value >= 100 && value <= 250;
+                    default:
+                        return true;
+                }
+            }
+
+            // Convert weight display based on units
+            convertWeightDisplay(unit) {
+                const weightInput = document.getElementById('userWeight');
+                const weightLabel = document.querySelector('label[for="userWeight"]');
+                
+                if (weightInput && weightLabel) {
+                    const currentWeight = parseFloat(weightInput.value);
+                    
+                    if (unit === 'imperial') {
+                        // Convert kg to lbs
+                        const weightInLbs = Math.round(currentWeight * 2.20462);
+                        weightInput.value = weightInLbs;
+                        weightLabel.textContent = 'Weight (lbs)';
+                        weightInput.min = '66'; // ~30kg
+                        weightInput.max = '661'; // ~300kg
+                    } else {
+                        // Convert lbs to kg or keep kg
+                        if (this.data.settings.units === 'imperial' && currentWeight > 100) {
+                            const weightInKg = Math.round(currentWeight / 2.20462);
+                            weightInput.value = weightInKg;
+                        }
+                        weightLabel.textContent = 'Weight (kg)';
+                        weightInput.min = '30';
+                        weightInput.max = '300';
+                    }
+                    
+                    // Update the setting
+                    this.updateProfileSetting('weight', parseFloat(weightInput.value));
+                }
+            }
+
+            // Update a general setting
+            updateSetting(key, value) {
+                this.data.settings[key] = value;
+                this.saveData();
+                // Notify other parts of the app that settings changed
+                try {
+                    window.dispatchEvent(new CustomEvent('fitlife_settings_updated', { detail: this.data.settings }));
+                } catch (e) {
+                    console.warn('Could not dispatch settings update event', e);
+                }
+                // Also write a small timestamp key to localStorage to ensure other tabs receive a storage event
+                try {
+                    localStorage.setItem('fitlife_settings_last_update', Date.now().toString());
+                } catch (err) {
+                    console.warn('Could not write settings timestamp for cross-tab sync', err);
+                }
+            }
+
+            // Update a profile setting
+            updateProfileSetting(key, value) {
+                this.data.settings.profile[key] = value;
+                this.saveData();
+            }
+
+            // Apply theme to the page
+            applyTheme(theme) {
+                document.body.setAttribute('data-theme', theme);
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+
+            // Apply accent color
+            applyAccentColor(color) {
+                try {
+                    document.documentElement.style.setProperty('--primary-color', color);
+                    document.documentElement.style.setProperty('--accent-color', color);
+                    // Compute RGB components and set --primary-rgb for rgba tints
+                    const rgb = SettingsManager.hexToRgb(color);
+                    if (rgb) {
+                        document.documentElement.style.setProperty('--primary-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+                    }
+                } catch (e) {
+                    console.warn('Could not apply accent color', e);
+                }
+            }
+
+            // Export data to JSON file
+            exportData() {
+                try {
+                    const allData = {
+                        workouts: this.safeParseJSON('fitlife_workouts') || [],
+                        meals: this.safeParseJSON('fitlife_meals') || [],
+                        notes: this.safeParseJSON('fitlife_notes') || [],
+                        settings: this.data.settings,
+                        profileImage: localStorage.getItem('fitlife_profile_image') || null,
+                        exportDate: new Date().toISOString(),
+                        version: '1.0'
+                    };
+                    
+                    const dataStr = JSON.stringify(allData, null, 2);
+                    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(dataBlob);
+                    
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `fitlife-backup-${new Date().toISOString().split('T')[0]}.json`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    URL.revokeObjectURL(url);
+                    this.showToast('Data exported successfully!', 'success');
+                } catch (error) {
+                    console.error('Export error:', error);
+                    this.showToast('Error exporting data', 'error');
+                }
+            }
+
+            // Import data from JSON file
+            importData(file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        
+                        // Validate imported data
+                        if (!importedData || typeof importedData !== 'object') {
+                            throw new Error('Invalid data format');
+                        }
+                        
+                        // Import data with validation
+                        if (importedData.workouts && Array.isArray(importedData.workouts)) {
+                            localStorage.setItem('fitlife_workouts', JSON.stringify(importedData.workouts));
+                        }
+                        
+                        if (importedData.meals && Array.isArray(importedData.meals)) {
+                            localStorage.setItem('fitlife_meals', JSON.stringify(importedData.meals));
+                        }
+                        
+                        if (importedData.notes && Array.isArray(importedData.notes)) {
+                            localStorage.setItem('fitlife_notes', JSON.stringify(importedData.notes));
+                        }
+                        
+                        if (importedData.settings && typeof importedData.settings === 'object') {
+                            this.data.settings = { ...this.data.settings, ...importedData.settings };
+                            localStorage.setItem('fitlife_settings', JSON.stringify(this.data.settings));
+                        }
+                        
+                        // Import profile image if exists
+                        if (importedData.profileImage) {
+                            localStorage.setItem('fitlife_profile_image', importedData.profileImage);
+                        }
+                        
+                        this.showToast('Data imported successfully!', 'success');
+                        
+                        // Reload settings after import
+                        setTimeout(() => {
+                            this.loadSettingsValues();
+                            this.applyTheme(this.data.settings.theme);
+                            this.applyAccentColor(this.data.settings.accentColor);
+                            this.loadProfileImage();
+                        }, 500);
+                        
+                    } catch (error) {
+                        console.error('Import error:', error);
+                        this.showToast('Error importing data. Please check the file format.', 'error');
+                    }
+                };
+                
+                reader.onerror = () => {
+                    this.showToast('Error reading file', 'error');
+                };
+                
+                reader.readAsText(file);
+            }
+
+            // Reset all data
+            resetAllData() {
+                try {
+                    // Clear all localStorage including profile image
+                    const keys = ['fitlife_workouts', 'fitlife_meals', 'fitlife_notes', 'fitlife_settings', 'fitlife_profile_image'];
+                    keys.forEach(key => localStorage.removeItem(key));
+                    
+                    this.showToast('All data has been reset successfully!', 'success');
+                    
+                    // Reload page after short delay
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } catch (error) {
+                    console.error('Reset error:', error);
+                    this.showToast('Error resetting data', 'error');
+                }
+            }
+
+            // Save settings to localStorage
+            saveData() {
+                try {
+                    localStorage.setItem('fitlife_settings', JSON.stringify(this.data.settings));
+                } catch (error) {
+                    console.error('Error saving settings:', error);
+                    this.showToast('Error saving settings', 'error');
+                }
+            }
+
+            // Show toast notification
+            showToast(message, type = 'success') {
+                // Remove existing toast if any
+                const existingToast = document.querySelector('.toast');
+                if (existingToast) {
+                    existingToast.remove();
+                }
+                
+                // Create toast element
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.textContent = message;
+                
+                // Add styles
+                Object.assign(toast.style, {
+                    position: 'fixed',
+                    top: '20px',
+                    right: '20px',
+                    padding: '12px 24px',
+                    borderRadius: '8px',
+                    color: 'white',
+                    fontWeight: '500',
+                    zIndex: '10000',
+                    transform: 'translateX(100%)',
+                    transition: 'transform 0.3s ease',
+                    backgroundColor: type === 'error' ? '#ef4444' : '#10b981',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                });
+                
+                document.body.appendChild(toast);
+                
+                // Animate in
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(0)';
+                }, 100);
+                
+                // Auto remove after 3 seconds
+                setTimeout(() => {
+                    toast.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+        }
+
+        // Initialize settings when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                window.settingsManager = new SettingsManager();
+            });
+        } else {
+            window.settingsManager = new SettingsManager();
+        }
+    </script>
+</body>
+</html>
