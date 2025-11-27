@@ -1201,6 +1201,17 @@ class FitLifeApp {
 
         this.applyTheme(newTheme);
         this.updateThemeIcon();
+
+        // Ensure any settings page theme buttons stay in sync
+        try {
+            document.querySelectorAll('[data-theme]').forEach(btn => {
+                if (btn && btn.dataset && btn.dataset.theme) {
+                    btn.classList.toggle('active', btn.dataset.theme === newTheme);
+                }
+            });
+        } catch (e) {
+            console.warn('Could not update settings theme buttons', e);
+        }
     }
 
     // Update theme icon based on current theme
