@@ -12,7 +12,7 @@
 <body>
     <div class="app-container">
         <header class="header">
-            <a href="index.html" class="logo" style="text-decoration: none; cursor: pointer; color: var(--primary-color);">
+            <div class="logo">
                 <svg class="logo-icon" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_6_543)">
                         <path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
@@ -25,8 +25,8 @@
                     </defs>
                 </svg>
                 <h1 class="logo-text">FitLife</h1>
-            </a>
-            <nav class="nav" id="mainNav">
+            </div>
+            <nav class="nav">
                 <a href="index.html" class="nav-link">Dashboard</a>
                 <a href="workout.html" class="nav-link">Workout</a>
                 <a href="nutrition.html" class="nav-link">Nutrition</a>
@@ -38,57 +38,31 @@
                     <span class="material-symbols-outlined theme-icon">light_mode</span>
                 </button>
                 <div class="profile-avatar"></div>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </header>
 
         <main class="main-content">
             <div class="content-container">
-                <div class="page-title">
-                    <h2>My Notes</h2>
+                <div class="notes-header modern-notes-header">
+                    <div class="notes-header-left">
+                        <h2 class="page-title">Notes</h2>
+                        <input type="text" id="noteSearch" class="note-search" placeholder="Search notes..." autocomplete="off" />
+                        <select id="noteFilter" class="note-filter">
+                            <option value="all">All</option>
+                            <option value="workout">Workout</option>
+                            <option value="nutrition">Nutrition</option>
+                            <option value="health">Health</option>
+                            <option value="personal">Personal</option>
+                            <option value="goals">Goals</option>
+                        </select>
+                    </div>
+                    <button class="new-note-btn modern-btn" id="newNoteBtn">
+                        <span class="material-symbols-outlined">add</span>
+                        <span>New Note</span>
+                    </button>
                 </div>
 
-                <!-- Search & Filter Section -->
-                <div class="notes-controls">
-                    <input type="text" id="noteSearch" class="note-search" placeholder="Search notes..." autocomplete="off" />
-                    <select id="noteFilter" class="note-filter">
-                        <option value="all">All Categories</option>
-                        <option value="workout">Workout</option>
-                        <option value="nutrition">Nutrition</option>
-                        <option value="health">Health</option>
-                        <option value="personal">Personal</option>
-                        <option value="goals">Goals</option>
-                    </select>
-                </div>
-
-                <!-- New Note Form Section -->
-                <h3 class="section-title">Create New Note</h3>
-                <div class="new-note-card">
-                    <form id="quickNoteForm" class="quick-note-form">
-                        <div class="quick-note-row">
-                            <input type="text" id="quickNoteTitle" class="quick-note-input" placeholder="Note title..." required>
-                            <select id="quickNoteCategory" class="quick-note-select" required>
-                                <option value="">Select category</option>
-                                <option value="workout">Workout</option>
-                                <option value="nutrition">Nutrition</option>
-                                <option value="health">Health</option>
-                                <option value="personal">Personal</option>
-                                <option value="goals">Goals</option>
-                            </select>
-                        </div>
-                        <textarea id="quickNoteContent" class="quick-note-textarea" placeholder="What's on your mind?" rows="3" required></textarea>
-                        <div class="quick-note-actions">
-                            <button type="submit" class="quick-note-submit-btn">Add Note</button>
-                        </div>
-                    </form>
-                </div>
-
-                <h3 class="section-title">Your Notes</h3>
-                <div class="notes-grid" id="notesGrid">
+                <div class="notes-grid modern-notes-grid" id="notesGrid">
                     <!-- Notes will be populated by JavaScript -->
                 </div>
             </div>

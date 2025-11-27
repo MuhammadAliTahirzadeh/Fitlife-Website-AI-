@@ -105,6 +105,7 @@ class FitLifeApp {
         this.setupProfileAvatarNavigation();
         this.loadProfileImageOnAllPages();
         this.setupThemeToggle();
+        this.setupMobileMenuToggle();
 
         // Listen for settings updates from the SettingsManager so changes apply immediately
         window.addEventListener('fitlife_settings_updated', (e) => {
@@ -467,56 +468,197 @@ class FitLifeApp {
 
     // Notes Functions
     initNotes() {
+        // Render initially
         this.renderNotes();
+
+        // Search & filter
+        const search = document.getElementById('noteSearch');
+        const filter = document.getElementById('noteFilter');
+        if (search) search.addEventListener('input', () => this.renderNotes());
+        if (filter) filter.addEventListener('change', () => this.renderNotes());
+
+        // New note button (open modal and reset form)
+        const newNoteBtn = document.getElementById('newNoteBtn');
+        if (newNoteBtn) {
+            newNoteBtn.addEventListener('click', () => {
+                const form = document.getElementById('noteForm');
+                if (form) {
+                    form.reset();
+                    delete form.dataset.editId;
+                }
+                const preview = document.getElementById('noteImagePreview'); if (preview) preview.innerHTML = '';
+                document.getElementById('modalTitle').textContent = 'Add New Note';
+                document.getElementById('saveNoteBtn').textContent = 'Save Note';
+                this.showModal('noteModal');
+            });
+        }
+
+        // Image preview
+        const noteImageInput = document.getElementById('noteImage');
+        const noteImagePreview = document.getElementById('noteImagePreview');
+        if (noteImageInput && noteImagePreview) {
+            noteImageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        noteImagePreview.innerHTML = `<img src='${ev.target.result}' style='max-width:140px;max-height:100px;border-radius:8px;object-fit:cover;'/>`;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    noteImagePreview.innerHTML = '';
+                }
+            });
+        }
+
+        // Quick note form (inline green form)
+        const quickNoteForm = document.getElementById('quickNoteForm');
+        if (quickNoteForm) {
+            quickNoteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const title = document.getElementById('quickNoteTitle')?.value.trim();
+                const category = document.getElementById('quickNoteCategory')?.value;
+                const content = document.getElementById('quickNoteContent')?.value.trim();
+                
+                if (title && category && content) {
+                    this.addNote({ title, content, category });
+                    quickNoteForm.reset();
+                }
+            });
+        }
     }
 
     renderNotes() {
         const notesGrid = document.getElementById('notesGrid');
         if (!notesGrid) return;
 
-        notesGrid.innerHTML = this.data.notes.map(note => `
-            <div class="note-card" data-id="${note.id}">
-                <div class="note-content">
-                    <h3 class="note-title">${note.title}</h3>
-                    <p class="note-description">${note.content.substring(0, 100)}${note.content.length > 100 ? '...' : ''}</p>
-                    <p class="note-category">${note.category}</p>
+        // Filter and search
+        const search = (document.getElementById('noteSearch')?.value || '').toLowerCase();
+        const filter = document.getElementById('noteFilter')?.value || 'all';
+        let filteredNotes = Array.isArray(this.data.notes) ? [...this.data.notes] : [];
+        if (filter !== 'all') filteredNotes = filteredNotes.filter(n => n.category === filter);
+        if (search) filteredNotes = filteredNotes.filter(n => (n.title || '').toLowerCase().includes(search) || (n.content || '').toLowerCase().includes(search));
+
+        // Sort: pinned first, then starred, then newest
+        filteredNotes.sort((a, b) => {
+            const p = (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0);
+            if (p !== 0) return p;
+            const s = (b.starred ? 1 : 0) - (a.starred ? 1 : 0);
+            if (s !== 0) return s;
+            return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+
+        notesGrid.innerHTML = filteredNotes.length ? filteredNotes.map(note => {
+            const categoryDisplay = note.category?.charAt(0).toUpperCase() + note.category?.slice(1) || 'General';
+            const dateObj = new Date(note.timestamp);
+            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const img = note.image ? `<img src="${note.image}" alt="${note.title}" class="note-image">` : '';
+            
+            return `
+            <div class="note-card" draggable="true" data-id="${note.id}">
+                <div class="note-header">
+                    <div>
+                        <h3 class="note-title" contenteditable="true" data-field="title" data-id="${note.id}">${this.escapeHtml(note.title || '')}</h3>
+                        <span class="note-category-badge">${this.escapeHtml(categoryDisplay)}</span>
+                    </div>
+                    <div style="display: flex; gap: 0.25rem;">
+                        <button class="note-action-btn" data-note-id="${note.id}" data-action="pin" title="Pin" style="font-size: 1.1rem;">
+                            <span class="material-symbols-outlined">${note.pinned ? 'push_pin' : 'push_pin'}</span>
+                        </button>
+                        <button class="note-action-btn" data-note-id="${note.id}" data-action="star" title="Star" style="font-size: 1.1rem;">
+                            <span class="material-symbols-outlined">${note.starred ? 'star' : 'star_outline'}</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="note-actions">
-                    <button class="note-action-btn" data-note-id="${note.id}" data-action="edit">
-                        <span class="material-symbols-outlined">edit</span>
-                    </button>
-                    <button class="note-action-btn" data-note-id="${note.id}" data-action="delete">
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
+                ${img}
+                <p class="note-content" contenteditable="true" data-field="content" data-id="${note.id}">${this.escapeHtml(note.content || '')}</p>
+                <div class="note-footer">
+                    <span class="note-timestamp">${dateStr}</span>
+                    <div class="note-actions">
+                        <button class="note-action-btn" data-note-id="${note.id}" data-action="edit" title="Edit">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                        <button class="note-action-btn" data-note-id="${note.id}" data-action="delete" title="Delete">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        `).join('');
+            `;
+        }).join('') : `<div class="no-notes-message"><p>No notes found. Create one above to get started!</p></div>`;
 
-        // Add event listeners for note actions
+        // Wire up interactions after rendering
         this.setupNoteEventListeners();
+        this.setupDragAndDrop();
     }
 
     setupNoteEventListeners() {
         const notesGrid = document.getElementById('notesGrid');
         if (!notesGrid) return;
 
-        notesGrid.addEventListener('click', (e) => {
-            if (e.target.closest('.note-action-btn')) {
-                const button = e.target.closest('.note-action-btn');
-                const noteId = parseInt(button.dataset.noteId);
-                const action = button.dataset.action;
-                
-                if (action === 'edit') {
-                    this.editNote(noteId);
-                } else if (action === 'delete') {
-                    this.deleteNote(noteId);
+        // Action buttons (pin, star, edit, delete)
+        notesGrid.querySelectorAll('.note-action-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const id = parseInt(btn.dataset.noteId);
+                const action = btn.dataset.action;
+                if (action === 'edit') return this.editNote(id);
+                if (action === 'delete') return this.deleteNote(id);
+                if (action === 'pin') return this.togglePin(id);
+                if (action === 'star') return this.toggleStar(id);
+            };
+        });
+
+        // Inline editable save on blur
+        notesGrid.querySelectorAll('[contenteditable="true"]').forEach(el => {
+            el.addEventListener('blur', (e) => {
+                const id = parseInt(e.target.dataset.id);
+                const field = e.target.dataset.field;
+                const note = this.data.notes.find(n => n.id === id);
+                if (note && field) {
+                    note[field] = e.target.textContent.trim();
+                    this.saveData('notes');
                 }
-            }
+            });
         });
     }
 
+    togglePin(id) {
+        const note = this.data.notes.find(n => n.id === id);
+        if (note) {
+            note.pinned = !note.pinned;
+            this.saveData('notes');
+            this.renderNotes();
+        }
+    }
+
+    toggleStar(id) {
+        const note = this.data.notes.find(n => n.id === id);
+        if (note) {
+            note.starred = !note.starred;
+            this.saveData('notes');
+            this.renderNotes();
+        }
+    }
+
     addNote(noteData) {
-        const newNote = { id: Date.now(), ...noteData, timestamp: new Date().toISOString() };
+        // If image file selected, read it then add, else add immediately
+        const noteImageInput = document.getElementById('noteImage');
+        if (noteImageInput && noteImageInput.files && noteImageInput.files[0]) {
+            const file = noteImageInput.files[0];
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                noteData.image = ev.target.result;
+                this._addNoteWithImage(noteData);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            this._addNoteWithImage(noteData);
+        }
+    }
+
+    _addNoteWithImage(noteData) {
+        const newNote = { id: Date.now(), title: noteData.title || '', content: noteData.content || '', category: noteData.category || 'personal', image: noteData.image || '', pinned: false, starred: false, timestamp: new Date().toISOString() };
         this.data.notes.push(newNote);
         this.saveData('notes');
         this.renderNotes();
@@ -524,15 +666,17 @@ class FitLifeApp {
 
     editNote(id) {
         const note = this.data.notes.find(n => n.id === id);
-        if (note) {
-            document.getElementById('noteTitle').value = note.title;
-            document.getElementById('noteContent').value = note.content;
-            document.getElementById('noteCategory').value = note.category;
-            document.getElementById('modalTitle').textContent = 'Edit Note';
-            document.getElementById('saveNoteBtn').textContent = 'Update Note';
-            document.getElementById('noteModal').classList.add('active');
-            document.getElementById('noteForm').dataset.editId = id;
-        }
+        if (!note) return;
+        document.getElementById('noteTitle').value = note.title || '';
+        document.getElementById('noteContent').value = note.content || '';
+        document.getElementById('noteCategory').value = note.category || '';
+        const preview = document.getElementById('noteImagePreview');
+        if (preview) preview.innerHTML = note.image ? `<img src='${note.image}' style='max-width:140px;max-height:100px;border-radius:8px;object-fit:cover;'/>` : '';
+        document.getElementById('modalTitle').textContent = 'Edit Note';
+        document.getElementById('saveNoteBtn').textContent = 'Update Note';
+        const form = document.getElementById('noteForm');
+        if (form) form.dataset.editId = id;
+        this.showModal('noteModal');
     }
 
     deleteNote(id) {
@@ -541,6 +685,67 @@ class FitLifeApp {
             this.saveData('notes');
             this.renderNotes();
         }
+    }
+
+    setupDragAndDrop() {
+        const grid = document.getElementById('notesGrid');
+        if (!grid) return;
+        let dragEl = null;
+
+        grid.querySelectorAll('.note-card').forEach(card => {
+            card.addEventListener('dragstart', (e) => {
+                dragEl = card;
+                e.dataTransfer.effectAllowed = 'move';
+                card.classList.add('dragging');
+            });
+
+            card.addEventListener('dragend', () => {
+                if (dragEl) dragEl.classList.remove('dragging');
+                dragEl = null;
+                grid.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+            });
+
+            card.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                const target = e.currentTarget;
+                if (target && target !== dragEl) {
+                    target.classList.add('drag-over');
+                }
+            });
+
+            card.addEventListener('dragleave', (e) => {
+                e.currentTarget.classList.remove('drag-over');
+            });
+
+            card.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const target = e.currentTarget;
+                if (!dragEl || dragEl === target) return;
+                const fromId = parseInt(dragEl.dataset.id);
+                const toId = parseInt(target.dataset.id);
+                this.reorderNotes(fromId, toId);
+            });
+        });
+    }
+
+    reorderNotes(fromId, toId) {
+        const notes = this.data.notes;
+        const fromIdx = notes.findIndex(n => n.id === fromId);
+        const toIdx = notes.findIndex(n => n.id === toId);
+        if (fromIdx === -1 || toIdx === -1) return;
+        const [moved] = notes.splice(fromIdx, 1);
+        notes.splice(toIdx, 0, moved);
+        this.saveData('notes');
+        this.renderNotes();
+    }
+
+    // Small helper to escape HTML inside rendered contenteditable fields
+    escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>\"']/g, function (s) {
+            return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[s];
+        });
     }
 
     // Settings Functions
@@ -1005,5 +1210,24 @@ class FitLifeApp {
 
         const currentTheme = this.data.settings.theme || 'dark';
         themeIcon.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
+    }
+
+    // Setup mobile menu toggle
+    setupMobileMenuToggle() {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                // Close menu when a nav link is clicked
+                const navLinks = mainNav.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active');
+                    });
+                });
+            });
+        }
     }
 }
